@@ -9,4 +9,4 @@ use Rack::Cors do
   end
 end
 
-run Application.new
+run API::Root
