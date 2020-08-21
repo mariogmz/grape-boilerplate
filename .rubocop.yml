@@ -1,0 +1,17 @@
+require: rubocop-performance
+
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
+
+AllCops:
+  TargetRubyVersion: 2.7
+
+Layout/LineLength:
+  IgnoredPatterns: ['(\A|\s)#']
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
