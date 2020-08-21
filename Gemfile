@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
+gem "config", "~> 2.2"
 gem "grape"
 gem "grape-jwt-authentication"
 gem "grape_logging"

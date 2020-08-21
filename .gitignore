@@ -103,8 +103,7 @@ tags
 .gitkeep
 
 # Configuration file
-api/config/settings.yml
-data
+config/settings.yml
 
 # Test unused files
 api/test/data

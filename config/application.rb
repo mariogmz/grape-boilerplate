@@ -7,9 +7,15 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 end
 
 require "boot"
-require "byebug" if %w[development test].include? ENV["RACK_ENV"]
+require "byebug" unless Env.production?
 
-Bundler.require :default, ENV["RACK_ENV"]
+Bundler.require :default, Env.rack
+
+Config.load_and_set_settings(
+  Config.setting_files(File.dirname(__FILE__), Env.rack)
+)
+
+Dir[File.expand_path("./initializers/*.rb", __dir__)].each { |f| require f }
 
 Dir[File.expand_path("../app/**/*.rb", __dir__)].sort.each do |file|
   require file

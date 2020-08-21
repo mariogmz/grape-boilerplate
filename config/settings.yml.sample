@@ -1,0 +1,6 @@
+---
+logger:
+  path: logs
+  filtered_parameters:
+    - password
+    - email
