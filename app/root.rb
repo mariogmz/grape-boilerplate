@@ -8,6 +8,17 @@ module API
 
     rescue_from :grape_exceptions
 
+    # Logging
+    logger ApiLogger.new
+
+    # Helpers
+    helpers do
+      include Helpers
+    end
+
+    # Middleware
+    use GrapeLogging::Middleware::RequestLogger, { logger: logger }
+
     get "/" do
       "Hello world"
     end

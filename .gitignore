@@ -112,7 +112,6 @@ api/test/data
 .ssh
 
 # logging
-application.log
-logs/**/*.log
+logs/
 
 # End of https://www.gitignore.io/api/vim,ruby,macos
