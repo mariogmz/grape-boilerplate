@@ -21,6 +21,15 @@ task :environment do
   require File.expand_path("config/environment.rb", __dir__)
 end
 
+# Shows app routes
+task routes: :environment do
+  API::Root.routes.each do |route|
+    method = route.request_method.ljust(10)
+    path = route.origin
+    puts "      #{method} #{path}"
+  end
+end
+
 require "rake/testtask"
 Rake::TestTask.new do |task|
   task.libs << "test"
