@@ -19,9 +19,8 @@ module API
     # Middleware
     use GrapeLogging::Middleware::RequestLogger, { logger: logger }
 
-    get "/" do
-      "Hello world"
-    end
+    # Routes
+    mount Routes::V1::API
 
     # Handle 404s
     route :any, "*path" do
