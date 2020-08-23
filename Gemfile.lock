@@ -137,13 +137,10 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.7)
-    mail (2.7.1)
-      mini_mime (>= 0.1.1)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     mocha (1.11.2)
@@ -272,7 +269,6 @@ DEPENDENCIES
   guard-rubocop
   json
   jwt
-  mail
   minitest
   mocha
   multi_json
