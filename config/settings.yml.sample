@@ -1,6 +1,10 @@
 ---
+
 logger:
   path: logs
-  filtered_parameters:
-    - password
-    - email
+
+jwt:
+  issuer: Sample Issuer
+  beholder: Sample Audience
+  private_key_path: ~/.ssh/id_rsa
+  public_key_url: ~/.ssh/id_rsa.pub
