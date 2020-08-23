@@ -22,6 +22,8 @@ module API
     # Routes
     mount Routes::V1::API
 
+    add_swagger_documentation
+
     # Handle 404s
     route :any, "*path" do
       error!({ message: "The resource you're looking for does not exist" }, 404)
