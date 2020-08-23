@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  ruby:
+    build: .
+    container_name: ruby-grape
+    environment:
+      RACK_ENV: development
+      APP_ROOT: /var/www/current
+      PORT: 3000
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/current
