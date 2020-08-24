@@ -24,7 +24,7 @@ class JwtTokenService
     end
 
     def public_key
-      return key_from_env(:private) if Settings.jwt.public_key
+      return key_from_env(:public) if Settings.jwt.public_key
       path = Settings.jwt.public_key_url
       OpenSSL::PKey::RSA.new(File.read(path))
     end
@@ -36,10 +36,7 @@ class JwtTokenService
       payload.merge(CLAIMS)
     end
 
-    def key(setting)
-      OpenSSL::PKey::RSA.new({
-        private: Settings.jwt.private_key,
-        public: Settings.jwt.public_key
-      }[setting])
+    def key_from_env(setting)
+      OpenSSL::PKey::RSA.new({ private: Settings.jwt.private_key, public: Settings.jwt.public_key }[setting])
     end
 end
