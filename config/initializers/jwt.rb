@@ -2,7 +2,12 @@
 
 Grape::Jwt::Authentication.configure do |config|
   # RSA configurations
-  config.rsa_public_key_url = Settings.jwt.public_key_url
+  if Settings.jwt.public_key
+    File.write("./public.key.pub", Settings.jwt.public_key) unless File.file?("./public.key.pub")
+    config.rsa_public_key_url = "./public.key.pub"
+  else
+    config.rsa_public_key_url = Settings.jwt.public_key_url
+  end
 
   # JWT Wrapper
   config.jwt_issuer = Settings.jwt.issuer

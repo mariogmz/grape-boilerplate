@@ -109,7 +109,7 @@ config/settings.yml
 api/test/data
 
 # Sample rsa files for JWT
-.ssh
+*.key*
 
 # logging
 logs/
