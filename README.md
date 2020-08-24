@@ -29,11 +29,34 @@ your app with the necessary configurations ready.
 $ cp config/settings.sample.yml config/settings.yml
 ```
 
+### ENV vars
+
+Configuration can be defined using environment variables, these will be
+available through the `Settings` object but need to be defined using the
+following syntax:
+
+```
+SETTINGS__LOGS__PATH="tmp/logs"
+```
+
+Using double "_" between namespaces and with the `SETTINGS` prefix, these
+have precedence over the values defined inside `config/settings.yml`, this
+a way to configure settings when deployed to Heroku.
+
 ### JWT
 
 You must generate a private and public key to sign your JWT Tokens in case
 you're going to use this as an authentication method, place the keys paths
 inside the settings file.
+
+For ENV based environments you can set an ENV variable to set keys values
+to sign Tokens, thought this is not recommended it can help to use keys in
+enviroments like Heroku where you can't access the key file itself.
+
+```
+SETTINGS__JWT__PRIVATE_KEY="your private key here"
+SETTINGS__JWT__PUBLIC_KEY="your public key here"
+```
 
 ## Development
 
@@ -42,6 +65,9 @@ For convenience use the `guard` gem to ease your development workflow:
 ```
 $ bundle exec guard
 ```
+
+Otherwise the `bundle exec rackup` command should just work fine, reloading
+is needed after any changes to code.
 
 ## Using Docker
 
@@ -79,11 +105,11 @@ use the rake task
 $ bundle exec rake routes
 
       GET        /api/:version/hello
+      POST       /api/login
       *          /*path
 ```
 
 ## Documentation
-WIP
 
-## Running in production
-WIP
+Project's documentation is generated using swagger, a GET to `/swagger_doc`
+should display a valid JSON to use inside [Swagger UI](https://editor.swagger.io/)
