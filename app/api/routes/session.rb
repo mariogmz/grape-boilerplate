@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Routes
+module API::Routes
   class Session < Grape::API
     prefix :api
     format :json

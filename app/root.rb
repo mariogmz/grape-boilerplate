@@ -25,7 +25,7 @@ module API
 
     # Routes
     mount Routes::Session
-    mount Routes::V1::API
+    mount Routes::V1
 
     add_swagger_documentation
 
