@@ -18,11 +18,13 @@ class JwtTokenService
 
   private
     def private_key
+      return key_from_env(:private) if Settings.jwt.private_key
       path = Settings.jwt.private_key_path
       OpenSSL::PKey::RSA.new(File.read(path))
     end
 
     def public_key
+      return key_from_env(:private) if Settings.jwt.public_key
       path = Settings.jwt.public_key_url
       OpenSSL::PKey::RSA.new(File.read(path))
     end
@@ -32,5 +34,12 @@ class JwtTokenService
       time = Time.now.to_i + minutes * 3600
       payload[:exp] = time
       payload.merge(CLAIMS)
+    end
+
+    def key(setting)
+      OpenSSL::PKey::RSA.new({
+        private: Settings.jwt.private_key,
+        public: Settings.jwt.public_key
+      }[setting])
     end
 end
