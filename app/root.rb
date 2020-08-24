@@ -17,9 +17,11 @@ module API
     end
 
     # Middleware
-    use GrapeLogging::Middleware::RequestLogger,
-        logger: logger,
-        include: [GrapeLogging::Loggers::FilterParameters.new([:password])]
+    unless Env.test?
+      use GrapeLogging::Middleware::RequestLogger,
+          logger: logger,
+          include: [GrapeLogging::Loggers::FilterParameters.new([:password])]
+    end
 
     # Routes
     mount Routes::Session
