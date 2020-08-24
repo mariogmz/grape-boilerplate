@@ -6,5 +6,11 @@ logger:
 jwt:
   issuer: Sample Issuer
   beholder: Sample Audience
-  private_key_path: ~/.ssh/id_rsa
-  public_key_url: ~/.ssh/id_rsa.pub
+  private_key_path: path_to_private_key_path
+  public_key_url: path_to_public_key_path
+  expiration_time_minutes: 1440
+
+api:
+  authorized_users: [
+    { username: mariogomezmtz, password: test123! }
+  ]

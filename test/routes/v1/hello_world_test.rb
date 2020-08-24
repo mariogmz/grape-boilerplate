@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class HelloWorldTest < ApiTest
+class HelloWorldTest < AuthenticatedApiTest
   def test_get_hello_says_hello
     get "/api/v1/hello", {}.to_json
     assert last_response.ok?, "Response wasn't ok: " \

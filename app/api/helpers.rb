@@ -3,7 +3,7 @@
 module API
   module Helpers
     def logger
-      self.logger
+      Root.logger
     end
   end
 end

@@ -17,9 +17,12 @@ module API
     end
 
     # Middleware
-    use GrapeLogging::Middleware::RequestLogger, { logger: logger }
+    use GrapeLogging::Middleware::RequestLogger,
+        logger: logger,
+        include: [GrapeLogging::Loggers::FilterParameters.new([:password])]
 
     # Routes
+    mount Routes::Session
     mount Routes::V1::API
 
     add_swagger_documentation
